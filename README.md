@@ -21,10 +21,11 @@ Before running, make sure you have:
 1. [Overview](#-overview)
 2. [Architecture](#-architecture)
 3. [Services](#-services)
-4. [Accessing the Apps](#-accessing-the-apps)
-5. [Grafana Setup](#-grafana-setup)
-6. [Screenshots](#-screenshots)
-7. [Summary](#-summary)
+4. [Dependencies](#-Application-Dependencies)
+5. [Accessing the Apps](#-accessing-the-apps)
+6. [Grafana Setup](#-grafana-setup)
+7. [Screenshots](#-screenshots)
+8. [Summary](#-summary)
 
 ---
 
@@ -97,6 +98,17 @@ graph TD
 * **Grafana** ↔️ connects to **Prometheus** to visualize metrics.
 
 ---
+⚙️ Application Dependencies (application.properties)
+
+```
+spring.datasource.url=jdbc:postgresql://postgres:5432/petclinic
+spring.datasource.username=petclinic
+spring.datasource.password=petclinic
+spring.profiles.active=postgres
+management.endpoints.web.exposure.include=*
+management.endpoint.prometheus.enabled=true
+management.metrics.export.prometheus.enabled=true
+```
 
 ## ⚙️ Services
 
