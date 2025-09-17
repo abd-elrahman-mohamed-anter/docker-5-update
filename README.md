@@ -98,6 +98,7 @@ graph TD
 * **Grafana** ↔️ connects to **Prometheus** to visualize metrics.
 
 ---
+
 ## ⚙️ Application Dependencies (application.properties)
 
 ```
