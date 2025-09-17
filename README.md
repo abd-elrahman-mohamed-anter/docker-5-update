@@ -98,7 +98,7 @@ graph TD
 * **Grafana** ↔️ connects to **Prometheus** to visualize metrics.
 
 ---
-⚙️ Application Dependencies (application.properties)
+## ⚙️ Application Dependencies (application.properties)
 
 ```
 spring.datasource.url=jdbc:postgresql://postgres:5432/petclinic
