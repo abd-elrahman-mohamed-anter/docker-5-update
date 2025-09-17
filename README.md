@@ -182,7 +182,8 @@ docker-compose up -d
 ### 📊 Grafana Dashboards
 
 ![Grafana JVM Dashboard](dashboard1.png)
-![Grafana JVM Memory](dashboard2.jpg)
+
+![Grafana JVM Memory](dashboard2.png)
 
 ### ⚙️ Actuator Metrics
 
