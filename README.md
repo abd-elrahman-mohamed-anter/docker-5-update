@@ -1,4 +1,3 @@
-
 # 🐾 Spring PetClinic with Postgres, Prometheus & Grafana
 
 This project demonstrates running the **Spring PetClinic** application with a **Postgres database**, monitored by **Prometheus** and **Grafana**, all orchestrated using **Docker Compose**.
@@ -35,11 +34,16 @@ graph TD
 ---
 
 ## 📦 Docker Compose Setup
+n
+## 🐳 Docker Compose Services
 
-Here’s the `docker-compose.yml` file:
+This project uses **Docker Compose** to run multiple services together.  
+Here’s a breakdown of each service defined in the `docker-compose.yml` file:
 
+---
+
+### 1. 🟢 PetClinic (Spring Boot App)
 ```yaml
-services:
   petclinic:
     image: spring-petclinic:latest
     container_name: petclinic
@@ -55,7 +59,19 @@ services:
       - SPRING_DATASOURCE_PASSWORD=petclinic
     depends_on:
       - postgres
+````
 
+* Runs the **Spring PetClinic** app.
+* Exposed on [http://localhost:8081](http://localhost:8081).
+* Uses **Postgres** as its database.
+* Exposes **Actuator + Prometheus metrics** for monitoring.
+* Depends on `postgres` (it must be running first).
+
+---
+
+### 2. 🟦 Postgres (Database)
+
+```yaml
   postgres:
     image: postgres:17.5
     container_name: postgres
@@ -65,7 +81,21 @@ services:
       POSTGRES_DB: petclinic
     ports:
       - "5432:5432"
+```
 
+* Provides a **PostgreSQL database** for the PetClinic app.
+* Credentials:
+
+  * Username: `petclinic`
+  * Password: `petclinic`
+  * Database: `petclinic`
+* Exposed locally on port **5432** (can connect using pgAdmin, DBeaver, etc.).
+
+---
+
+### 3. 📊 Prometheus (Monitoring)
+
+```yaml
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -75,7 +105,18 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
       - petclinic
+```
 
+* Collects metrics from **PetClinic** (`/actuator/prometheus`).
+* Uses a config file `prometheus.yml` to define scrape targets.
+* Accessible at [http://localhost:9090](http://localhost:9090).
+* Depends on `petclinic`.
+
+---
+
+### 4. 📈 Grafana (Dashboards)
+
+```yaml
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -86,6 +127,28 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
+```
+
+* Provides visualization for metrics collected by Prometheus.
+* Default login:
+
+  * Username: `admin`
+  * Password: `admin`
+* Accessible at [http://localhost:3000](http://localhost:3000).
+* Depends on `prometheus`.
+
+---
+
+## ⚡ How Everything Connects
+
+* **PetClinic** ↔️ uses **Postgres** as its DB.
+* **Prometheus** ↔️ scrapes metrics from **PetClinic**.
+* **Grafana** ↔️ connects to **Prometheus** to visualize metrics.
+
+➡️ All services are started together using:
+
+```bash
+docker-compose up -d
 ```
 
 ---
