@@ -1,8 +1,4 @@
-تمام 👌، خليني أظبطلك الـ **README.md** بحيث يحتوي على الـ `docker-compose.yml` اللي إنت كاتبه مع الشرح خطوة بخطوة، ويبقى منظم زي مشاريع المونيترينج الجاهزة على GitHub.
 
----
-
-````markdown
 # 🐾 Spring PetClinic with Postgres, Prometheus & Grafana
 
 This project demonstrates running the **Spring PetClinic** application with a **Postgres database**, monitored by **Prometheus** and **Grafana**, all orchestrated using **Docker Compose**.
