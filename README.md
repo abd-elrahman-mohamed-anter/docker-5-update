@@ -183,6 +183,3 @@ This setup includes:
 * **Prometheus** scraping metrics from `/actuator/prometheus`.
 * **Grafana** dashboards to visualize application & JVM metrics.
 
-```
-
-
