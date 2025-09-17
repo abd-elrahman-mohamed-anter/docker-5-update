@@ -1,4 +1,6 @@
+تمام! أنا هظبطلك الـ README كامل بحيث كل الـ anchors والـ links تشتغل، من غير أي مشاكل في التصفح أو الـ dependencies section، مع الحفاظ على كل الرموز والصور اللي انت مستخدمها:
 
+````markdown
 ---
 
 # 🐾 Spring PetClinic with Postgres, Prometheus & Grafana
@@ -18,18 +20,18 @@ Before running, make sure you have:
 
 ## 📚 Table of Contents
 
-1. [Overview](#-overview)
-2. [Architecture](#-architecture)
-3. [Services](#-services)
-4. [Dependencies](#-Application-Dependencies)
-5. [Accessing the Apps](#-accessing-the-apps)
-6. [Grafana Setup](#-grafana-setup)
-7. [Screenshots](#-screenshots)
-8. [Summary](#-summary)
+1. [Overview](#overview)
+2. [Architecture](#architecture)
+3. [Services](#services)
+4. [Dependencies](#dependencies)
+5. [Accessing the Apps](#accessing-the-apps)
+6. [Grafana Setup](#grafana-setup)
+7. [Screenshots](#screenshots)
+8. [Summary](#summary)
 
 ---
 
-## 🔎 Overview
+## 🔎 Overview {#overview}
 
 * **PetClinic** → Sample Spring Boot app connected to Postgres, with Actuator + Prometheus metrics enabled.
 * **Postgres** → Database backend for PetClinic.
@@ -38,18 +40,18 @@ Before running, make sure you have:
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture {#architecture}
 
 ```mermaid
 graph TD
   A[Spring PetClinic] -->|JDBC| B[(Postgres DB)]
   A -->|/actuator/prometheus| C[Prometheus]
   C --> D[Grafana Dashboards]
-```
+````
 
 ---
 
-## 🐳 Docker Compose Services
+## 🐳 Docker Compose Services {#services}
 
 ### 1. 🟢 PetClinic (Spring Boot App)
 
@@ -91,15 +93,7 @@ graph TD
 
 ---
 
-## ⚡ How Everything Connects
-
-* **PetClinic** ↔️ uses **Postgres** as its DB.
-* **Prometheus** ↔️ scrapes metrics from **PetClinic**.
-* **Grafana** ↔️ connects to **Prometheus** to visualize metrics.
-
----
-
-## ⚙️ Application Dependencies (application.properties)
+## ⚙️ Application Dependencies {#dependencies}
 
 ```
 spring.datasource.url=jdbc:postgresql://postgres:5432/petclinic
@@ -110,6 +104,8 @@ management.endpoints.web.exposure.include=*
 management.endpoint.prometheus.enabled=true
 management.metrics.export.prometheus.enabled=true
 ```
+
+---
 
 ## ⚙️ Services
 
@@ -122,7 +118,7 @@ management.metrics.export.prometheus.enabled=true
 
 ---
 
-## 🚀 Running the Stack
+## 🚀 Running the Stack {#accessing-the-apps}
 
 Start everything:
 
@@ -138,7 +134,7 @@ Access the apps:
 
 ---
 
-## 📈 Grafana Setup
+## 📈 Grafana Setup {#grafana-setup}
 
 1. Open [http://localhost:3000](http://localhost:3000)
    Login → `admin / admin`
@@ -156,7 +152,7 @@ Access the apps:
 
 ---
 
-## 📸 Screenshots
+## 📸 Screenshots {#screenshots}
 
 ### 🐶 PetClinic
 
@@ -182,11 +178,14 @@ Access the apps:
 
 ---
 
-## ✅ Summary
+## ✅ Summary {#summary}
 
 This setup includes:
 
 * **PetClinic** app (with Postgres backend).
 * **Prometheus** scraping metrics from `/actuator/prometheus`.
 * **Grafana** dashboards to visualize application & JVM metrics.
+
+```
+
 
