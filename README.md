@@ -6,12 +6,11 @@ This project demonstrates running the **Spring PetClinic** application with a **
 
 ## 📚 Table of Contents
 1. [Overview](#-overview)  
-2. [Architecture](#-architecture)  
-3. [Docker Compose Setup](#-docker-compose-setup)  
-4. [Services](#-services)  
-5. [Accessing the Apps](#-accessing-the-apps)  
-6. [Screenshots](#-screenshots)  
-7. [Summary](#-summary)  
+2. [Architecture](#-architecture)   
+3. [Services](#-services)  
+4. [Accessing the Apps](#-accessing-the-apps)  
+5. [Screenshots](#-screenshots)  
+6. [Summary](#-summary)  
 
 ---
 
@@ -33,8 +32,7 @@ graph TD
 
 ---
 
-## 📦 Docker Compose Setup
-n
+
 ## 🐳 Docker Compose Services
 
 This project uses **Docker Compose** to run multiple services together.  
@@ -145,12 +143,6 @@ Here’s a breakdown of each service defined in the `docker-compose.yml` file:
 * **Prometheus** ↔️ scrapes metrics from **PetClinic**.
 * **Grafana** ↔️ connects to **Prometheus** to visualize metrics.
 
-➡️ All services are started together using:
-
-```bash
-docker-compose up -d
-```
-
 ---
 
 ## ⚙️ Services
@@ -166,17 +158,18 @@ docker-compose up -d
 
 ## 🚀 Running the Stack
 
-1. Start the services:
+➡️ All services are started together using:
 
-   ```bash
-   docker-compose up -d
-   ```
+```bash
+docker-compose up -d
+```
+
 
 2. Access the apps:
 
    * PetClinic → [http://localhost:8081](http://localhost:8081)
    * Prometheus → [http://localhost:9090](http://localhost:9090)
-   * Grafana → [http://localhost:3000](http://localhost:3000) *(user: `admin`, pass: `admin`)*
+   * Grafana → [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -213,7 +206,4 @@ This setup includes:
 * **Prometheus** scraping metrics from `/actuator/prometheus`.
 * **Grafana** dashboards to visualize application & JVM metrics.
 
-👉 Ideal for learning **Spring Boot monitoring** with Docker, Prometheus & Grafana.
 
-تحب أزود كمان مثال لـ **prometheus.yml** جوه الـ README بحيث يبقى كل حاجة self-contained ولا تخليه ملف منفصل؟
-```
